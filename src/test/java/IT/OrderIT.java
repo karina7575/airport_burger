@@ -29,6 +29,8 @@ public class OrderIT {
         Waitress waitress = new Waitress();
         waitress.giveOrderToKitchen(DishType.BURGER, kitchen);
         kitchen.cook(DishType.BURGER);
+        PayTerminal terminal = new PayTerminal();
+        terminal.pay(DishType.BURGER, Currency.RUB);
         Dish expectedDish = new Dish(DishType.BURGER);
         Dish actualDish = kitchen.getCompletedDishes().get(DishType.BURGER).peek();
         Assertions.assertEquals(expectedDish, actualDish);
