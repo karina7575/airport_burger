@@ -1,3 +1,5 @@
+package unit_tests;
+
 import com.javaacademy.burger.Kitchen;
 import com.javaacademy.burger.dish.Dish;
 import com.javaacademy.burger.dish.DishType;
