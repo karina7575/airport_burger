@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 
 import java.math.BigDecimal;
 
-public class SASCheck {
+public class SASCheckIT {
 
     @Test
     @DisplayName("Проверка с фейковой оплатой")
@@ -18,15 +18,14 @@ public class SASCheck {
         Kitchen kitchen = new Kitchen();
         Waitress waitress = new Waitress();
         waitress.giveOrderToKitchen(DishType.RIBS, kitchen);
-        kitchen.cook(DishType.RIBS);
 
         PayTerminal terminal = Mockito.mock(PayTerminal.class);
         Mockito.when(terminal.pay(DishType.RIBS, Currency.RUB))
-                        .thenReturn(new Paycheck(BigDecimal.valueOf(700), Currency.RUB, DishType.RIBS));
+                .thenReturn(new Paycheck(BigDecimal.valueOf(700), Currency.RUB, DishType.RIBS));
         terminal.pay(DishType.BURGER, Currency.RUB);
 
         Dish expectedDish = new Dish(DishType.RIBS);
-        Dish actualDish = kitchen.getCompletedDishes().get(DishType.RIBS).peek();
+        Dish actualDish = waitress.takeDishFromKitchen(DishType.RIBS, kitchen);
         Assertions.assertEquals(expectedDish, actualDish);
     }
 

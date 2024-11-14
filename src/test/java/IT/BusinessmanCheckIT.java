@@ -6,9 +6,8 @@ import com.javaacademy.burger.dish.DishType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-public class OrderIT {
+public class BusinessmanCheckIT {
     @Test
     @DisplayName("Проверка чека после заказа")
     public void successOrderCheck() {
